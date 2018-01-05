@@ -30,6 +30,7 @@ In case files from different lanes have already been merged, then we have 2 fast
 In order to proceed, it is required to zip the sam file.
 
 3. *python bin/readSAMpileup.py --sam outfile_rootname.sam.gz --out outfile_rootname.pileup*
+This script goes through all the reads in the sam file, and selects those who have been mapped to the GFP in the proper strand and contain the primer used in the nested PCR for their amplification (GGCCCCGTGCTGCTGCCCGAC) with a Hamming distance equal or less than 3. Then, it counts how many times a given read/scar is seen in each cell. As an output if produces a tabular separated file (tsv) and a pickle file containing the table. 
 
 4. *python bin/realignScars-new.py --picklein outfile_rootname.pileup.pickle --out outfile_rootname.scartab --th 8*
 
