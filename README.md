@@ -34,9 +34,9 @@ In case files from different lanes have already been merged, then we have 2 fast
 
 4. *python bin/realignScars.py --picklein outfile_rootname.pileup.pickle --out outfile_rootname.scartab --th 8* <br/>
  The script remaps pileup reads using the biopython function pairwise2.align.globalms with match, mismatch, open and extend parameters equal to 1, 0.25, -1 and -0.1, respetively. This allows to correct for sequencing errors and pool together reads that belong to the same scar for the same cell. From now on, scars are defined using cigar codes, and the sequence is not used any more. As outptu files we get: <br/>
- a) outfile_rootname.scartab.txt: lists all pileuped reads and corresponding mapping and assigned cigar code
- b) outfile_rootname.scartab.pickle: pickle version of the previous list. 
- c) outfile_rootname.scartab.tsv: table containing number of reads per cell for each scar, denoted now as a cigar. 
+ a) outfile_rootname.scartab.txt: lists all pileuped reads and corresponding mapping and assigned cigar code <br/>
+ b) outfile_rootname.scartab.pickle: pickle version of the previous list <br/>
+ c) outfile_rootname.scartab.tsv: table containing number of reads per cell for each scar, denoted now as a cigar <br/>
  
 
 ## Clone extraction
