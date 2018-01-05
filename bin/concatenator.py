@@ -1,3 +1,5 @@
+# Reads R1.fastq and R2.fastq files, selects reads with proper cell barcode and produces a new _cbc.fastq file.
+
 import sys, os
 import itertools as it
 import argparse as argp
