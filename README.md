@@ -27,14 +27,17 @@ In case files from different lanes have already been merged, then we have 2 fast
   The script unzips R1 and R2 fastq files and merges files from different lanes. Next, it produces a new fastq file (cbc.fastq) with reads with proper cell-specific barcodes. Finally, it maps the cbc.fastq file using bwa. 
  
 2. *gzip outfile_rootname.sam* <br/>
-In order to proceed, it is required to zip the sam file.
+ In order to proceed, it is required to zip the sam file.
 
-3. *python bin/readSAMpileup.py --sam outfile_rootname.sam.gz --out outfile_rootname.pileup*
-This script goes through all the reads in the sam file, and selects those who have been mapped to the GFP in the proper strand and contain the primer used in the nested PCR for their amplification (GGCCCCGTGCTGCTGCCCGAC) with a Hamming distance equal or less than 3. Then, it counts how many times a given read/scar is seen in each cell. As an output if produces a tabular separated file (tsv) and a pickle file containing the table. 
+3. *python bin/readSAMpileup.py --sam outfile_rootname.sam.gz --out outfile_rootname.pileup* <br/>
+ This script goes through all the reads in the sam file, and selects those who have been mapped to the GFP in the proper strand and contain the primer used in the nested PCR for their amplification (GGCCCCGTGCTGCTGCCCGAC) with a Hamming distance equal or less than 3. Then, it counts how many times a given read/scar is seen in each cell. As an output if produces a tabular separated file (tsv) and a pickle file containing the table. 
 
-4. *python bin/realignScars-new.py --picklein outfile_rootname.pileup.pickle --out outfile_rootname.scartab --th 8*
-
-5. *python bin/createSCARTAB.py outfile_rootname.scartab.pickle outfile_rootname.scartab.tsv*
+4. *python bin/realignScars.py --picklein outfile_rootname.pileup.pickle --out outfile_rootname.scartab --th 8* <br/>
+ The script remaps pileup reads using the biopython function pairwise2.align.globalms with match, mismatch, open and extend parameters equal to 1, 0.25, -1 and -0.1, respetively. This allows to correct for sequencing errors and pool together reads that belong to the same scar for the same cell. From now on, scars are defined using cigar codes, and the sequence is not used any more. As outptu files we get: <br/>
+ a) outfile_rootname.scartab.txt: lists all pileuped reads and corresponding mapping and assigned cigar code
+ b) outfile_rootname.scartab.pickle: pickle version of the previous list. 
+ c) outfile_rootname.scartab.tsv: table containing number of reads per cell for each scar, denoted now as a cigar. 
+ 
 
 ## Clone extraction
 1. Filter
