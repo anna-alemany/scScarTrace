@@ -38,6 +38,22 @@ In case files from different lanes have already been merged, then we have 2 fast
  b) outfile_rootname.scartab.pickle: pickle version of the previous list <br/>
  c) outfile_rootname.scartab.tsv: table containing number of reads per cell for each scar, denoted now as a cigar <br/>
  
+## Filtering 
+1. *python bin/findThresholds-QCplots.py outfile_rootname.scartab.tsv* <br/>
+ This script takes as an input the file *outfile_rootname.scartab.tsv* and provides possible thresholds to filter out cells where scScarTrace did not work and noisy scars that arise due to sequencing and mapping artifacts. The script provides several output files:
+ * sumXcell.txt: 
+ * sumXcell.pdf:
+ * sumXcell.hst:
+ * sumXcell.fit:
+ * sumXcell-histo.pdf:
+ * sumXscar.txt
+ * sumXscar.fit
+ * sumXscar.pdf
+ * sumXscar-histo.pdf: <br/>
+Examples for all these files can be found in the folder "examples".
+ 
+2. 
+ 
 
 ## Clone extraction
 1. Filter
