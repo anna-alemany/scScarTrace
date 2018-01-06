@@ -41,15 +41,12 @@ In case files from different lanes have already been merged, then we have 2 fast
 ## Filtering 
 1. *python bin/findThresholds-QCplots.py outfile_rootname.scartab.tsv* <br/>
  This script takes as an input the file *outfile_rootname.scartab.tsv* and provides possible thresholds to filter out cells where scScarTrace did not work and noisy scars that arise due to sequencing and mapping artifacts. The script provides several output files:
-  * sumXcell.txt: text file with the total number of reads detected per cell. 
-  * sumXcell.pdf: barplot of the total number of reads detected per cell
-  ![picture alt](https://github.com/anna-alemany/scScarTrace/tree/master/examples/sumXcell.pdf)
-
-  
-  * sumXcell.hst:
-  * sumXcell.fit:
-  * sumXcell-histo.pdf:
-  * sumXscar.txt
+  - ![sumXcell.txt](https://github.com/anna-alemany/scScarTrace/tree/master/examples/sumXcell.txt): text file with the total number of reads detected per cell. If a cell is absent from the list this implies that no read at all was detected. 
+  - ![sumXcell.pdf](https://github.com/anna-alemany/scScarTrace/tree/master/examples/sumXcell.pdf): barplot of the total number of reads detected per cell
+  * ![sumXcell.hst](https://github.com/anna-alemany/scScarTrace/tree/master/examples/sumXcell.hst): normalized histogram of the total number of reads detected per cell. 
+  * ![sumXcell.fit](https://github.com/anna-alemany/scScarTrace/tree/master/examples/sumXcell.fit): results from fitting the normalized histogram of the total number of reads per cell with a double Gaussian function. 
+  * ![sumXcell-histo.pdf](https://github.com/anna-alemany/scScarTrace/tree/master/examples/sumXcell-histo.pdf): plot showing the histogram of the total number of detected reads per cell and the correspoinding fit to a double Gaussian function. The x-axis is shown in log10 scale. The plot gives a value _x_ for the minimum of the double Gaussian function, which can be used as a threshold to filter out cells with less reads than _10^x_.
+  * ![sumXscar.txt](https://github.com/anna-alemany/scScarTrace/tree/master/examples/sumXscar.txt): 
   * sumXscar.fit
   * sumXscar.pdf
   * sumXscar-histo.pdf: <br/>
