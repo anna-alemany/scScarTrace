@@ -1,0 +1,28 @@
+[[Model]]
+    Model(exp3dv2)
+[[Fit Statistics]]
+    # function evals   = 128
+    # data points      = 41
+    # variables        = 6
+    chi-square         = 1.033
+    reduced chi-square = 0.030
+    Akaike info crit   = -138.934
+    Bayesian info crit = -128.653
+[[Variables]]
+    a1:   0.86669304 +/- 0.168841 (19.48%) (init= 0.8120848)
+    b1:  -2.69292267 +/- 0.445273 (16.53%) (init=-3)
+    b2:  -0.59685638 +/- 0.058682 (9.83%) (init=-1)
+    b3:  -0.10542017 +/- 0.046072 (43.70%) (init=-0.05)
+    f1:   0.56475716 +/- 0.074366 (13.17%) (init= 1)
+    f2:   2.86280085 +/- 0.245543 (8.58%) (init= 4)
+[[Correlations]] (unreported correlations are <  0.100)
+    C(a1, b1)                    = -0.861 
+    C(b1, f1)                    =  0.681 
+    C(b3, f2)                    =  0.666 
+    C(b2, f2)                    =  0.577 
+    C(b2, f1)                    =  0.419 
+    C(a1, f1)                    = -0.306 
+    C(f1, f2)                    =  0.167 
+
+Scar read Threshold:
+2.86280085619 729.123097417
