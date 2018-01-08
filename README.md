@@ -76,14 +76,15 @@ In case files from different lanes have already been merged, then we have 2 fast
  As a first approach, we cluster cells based on scar pattern using hierarchical or agglomerative clustering. The scripts takes for input parameters: 
  * _output_merged_rname.tsv_: file with input scar percentage table
  * _n_: Number of clusters. This will have an impact for the next filtering step. 
- * _output3_rname_: name of output file where the scar percentage table is transposed and contains a new column with the cluster identity for each cell. 
+ * _output3_rname_: root name of output files.
  * _method_label_: label to choose the clustering algorithm approach: "hcl" for hierarchical clustering and "acl" for agglomerative clustering. 
  
  As an output, the script produces four files: 
- * _output3_rname_df.txt_: 
- * _output3_rname_clust.txt_: 
- * _output3_rname_centroid.txt_: 
- * _output3_rname.gpl: 
+ * _output3_rname_df.txt_: text file with the scar percentage table which is now transposed and contains a new column with the cluster identity for each cell. 
+ * _output3_rname_clust.txt_: text file with the list of cluster assigned to each cell.
+ * _output3_rname_centroid.txt_: text file with table of mean scar expression over all cells assigned to each cluster.
+ * _output3_rname.gpl_: script to generate scar barplode in ![gnuplot](http://www.gnuplot.info/).
+ * _output3_rname_barplot.pdf_: plot...
  
 
 2. Cluster
