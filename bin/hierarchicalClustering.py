@@ -11,33 +11,19 @@ try:
     outfile = sys.argv[3]
     method = sys.argv[4]
 except:
-    sys.exit('Please, give input table, number of clusters; root for output file; method (pre/post)')
+    sys.exit('Please, give input table, number of clusters; root for output file; method (hcl/acl)')
 
 df = read_csv(indata, sep = '\t', index_col = 0)
 df.columns.name = 'cellid'
 if '720M' in df.index:
     df = df.loc[['720M'] + [idx for idx in df.index if idx != '720M']]
 
-if method == 'pre':  #### Before cleaning ####
+if method == 'hcl':  #### Before cleaning ####
     hclust = sklearn.cluster.KMeans(n_clusters = ncluster, random_state = 20)
     hclust.fit(df.transpose())
-elif method == 'post': #### After cleaning ####
-#    fdata = (df > 0).astype(int)
-#    cdata = fdata.apply(lambda col1: fdata.apply(lambda col2: dist.cityblock(col1, col2)))
+elif method == 'acl': #### After cleaning ####
     hclust = sklearn.cluster.AgglomerativeClustering(n_clusters = ncluster)
-#    hclust = sklearn.cluster.KMeans(n_clusters = ncluster)
-#    hclust = sklearn.cluster.AffinityPropagation()
-#    hclust.fit(cdata)
     hclust.fit(df.transpose())
-
-# o be #
-#hclust = sklearn.cluster.KMeans(n_clusters = ncluster)
-#hclust.fit(df.transpose())
-
-# o be #
-#hclust = sklearn.cluster.AgglomerativeClustering(n_clusters=ncluster)
-#hclust.fit(df.transpose())
-#hclust.fit(df.corr())
 
 hclustdf = pd.DataFrame({'hclust': hclust.labels_}, index = df.columns)
 hclustdf = hclustdf.sort_values(by = 'hclust')
