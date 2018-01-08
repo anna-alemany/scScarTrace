@@ -61,7 +61,10 @@ In case files from different lanes have already been merged, then we have 2 fast
  The script takes as an input the outfile_rname_norm-filter.txt file and the outfile_rootname.scartab.txt in order to provide an histogram of sequence content per each cigar. Hence, we can check how many reads for each nucleotide we have in each position of the read. Therefore, when in a given position there are two nucleotides observed with a 50-50 frequency, we know that we have to be careful with this cigar since it codes two different scars. All histograms are stored in the *outscardir_name* directory (which the script creates in case it does not exist). 
 
 4. *python bin/cleanScarErrors.py outfile_rname_norm-filter.txt outscardir_name outfile2_rname*
- 
+ For each cell, the script compares pairwise the sequence of cigars/scars that are observed with a percentage above a scarthreshold set to 0.5 by default. In case the distance between two scar sequencies is lower than a given threshold hdthreshold set to 5 by default, the script assumes that these correspond to the same scar and merges them. 
+ As an output, the script generates two files:
+ * outfile2_rname.log: log files that details which scars are considered to be sequencing errors of others and which have been pooled for each cell. 
+ * outfile2_rname.txt: text file with the table of new scar percentage per cell. 
 
 ## Clone extraction
 2. Cluster
