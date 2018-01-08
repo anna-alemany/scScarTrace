@@ -58,9 +58,10 @@ In case files from different lanes have already been merged, then we have 2 fast
  * outfile_rname_norm-filter.txt: text file with a table of normalized reads for each scar per cell. Normalized reads for each cell have been obtained by dividing the number of reads per scar by the total number of reads per cell, and multiplying the result by 100 to have a percentage. 
 
 3. *python bin/scarPurityHistogram.py outfile_rname_norm-filter.txt outfile_rootname.scartab.txt outscardir_name*
- The script takes as an input the outfile_rname_norm-filter.txt file and the outfile_rootname.scartab.txt in order to provide an histogram of sequence content per each cigar. Hence, we can check how many reads for each nucleotide we have in each position of the read. Therefore, when in a given position there are two nucleotides observed with a 50-50 frequency, we know that we have to be careful with this cigar since it codes two different scars. All histograms are stored in the *outscar_name* directory (which the script creates in case it does not exist). 
+ The script takes as an input the outfile_rname_norm-filter.txt file and the outfile_rootname.scartab.txt in order to provide an histogram of sequence content per each cigar. Hence, we can check how many reads for each nucleotide we have in each position of the read. Therefore, when in a given position there are two nucleotides observed with a 50-50 frequency, we know that we have to be careful with this cigar since it codes two different scars. All histograms are stored in the *outscardir_name* directory (which the script creates in case it does not exist). 
 
-4. *python bin/cleanScarErrors.py outfile_rname_norm-filter.txt outscar_name outfile2_rname*
+4. *python bin/cleanScarErrors.py outfile_rname_norm-filter.txt outscardir_name outfile2_rname*
+ 
 
 ## Clone extraction
 2. Cluster
