@@ -75,7 +75,7 @@ In case files from different lanes have already been merged, then we have 2 fast
 1. *python bin/hierarchicalClustering.py output_merged_rname.tsv n output3_rname method_label pdfplot_label*
  As a first approach, we cluster cells based on scar pattern using hierarchical or agglomerative clustering. The scripts takes for input parameters: 
  * _output_merged_rname.tsv_: file with input scar percentage table
- * _n_: Number of clusters. This will have an impact for the next filtering step. 
+ * _n_: Number of clusters. This will have an impact for the next filtering step. In this step of the analysis it is not very important to get the correct number of clusters, and it is actually better to set the number of clusters a bit higher than what it really is. 
  * _output3_rname_: root name of output files.
  * _method_label_: label to choose the clustering algorithm approach: "hcl" for hierarchical clustering and "acl" for agglomerative clustering. 
  * _pdfplot_label_: label to activate the generation of a plot with the barplot of scar percentage per cell when set to "y". When this label is equal to "y" the code becomes a bit slower. 
@@ -85,7 +85,7 @@ In case files from different lanes have already been merged, then we have 2 fast
  * _output3_rname_clust.txt_: text file with the list of cluster assigned to each cell.
  * _output3_rname_centroid.txt_: text file with table of mean scar expression over all cells assigned to each cluster.
  * _output3_rname.gpl_: script to generate scar barplode in ![gnuplot](http://www.gnuplot.info/).
- * _output3_rname_barplot.pdf_: barplot displaying scar percentage per cell, with cells sorted by clone identity. This plot is only generated when _pdfplot_label_ is set to _y_
+ * _output3_rname_barplot.pdf_: barplot displaying scar percentage per cell, with cells sorted by clone identity. This plot is only generated when _pdfplot_label_ is set to _y_. For the sake of speed, it is better to produce this plot with the gnuplot using the script generated. 
  
 3. Clean noisy scars
 4. Final clustering via hamming distances
