@@ -66,7 +66,7 @@ print >> f, 'set style fill solid'
 print >> f, 'unset xtic'
 print >> f, 'set key out'
 print >> f, 'set ytics 0,20,100'
-print >> f, 'l "/Users/anna/programs/gnuplot/gnuplot-extendcolor.gpl"'
+print >> f, 'l "var/gnuplot-extendcolor.gpl"'
 print >> f, 'pl for [i=2:' + str(df.shape[1]) + '] "' + outfile + '_df.txt" us i:xtic(1) ti col'
 print >> f, 'rep for [i=0:' + str(ncluster-1) + '] "' + outfile + '_clust.txt" us ($2==i?10:1/0) noti'
 f.close()
