@@ -68,11 +68,23 @@ In case files from different lanes have already been merged, then we have 2 fast
 
 ## Clone extraction
 0. *python bin/mergeDF.py n file_1 label_1 file_2 label_2 ... file_n label_n output_merged_rname*
-Until now, all scripts are run independently for each library. The following scripts can be run on merged tables, produced after running the _bin/cleanScarErrors.py_ script. To merge this tables in _outfile2_rname.txt_ one can run this script, giving first the total number of files one wants to merge, followed by the file names (with the path, when necessary), _file_1, file_2, ..., file_n_, and the corresponding labels to append at the column names of each file. The are two output files:
-* output_merged_rname.txt: table with the percentage of each scar per cell will contain all columns from _file_1, file_2, ..., file_n_ with the appended corresponding label, and merged scars for all files as rows. 
-* output_merged_rname.log: summary of files merged and corresponding labels.  
+ Until now, all scripts are run independently for each library. The following scripts can be run on merged tables, produced after running the _bin/cleanScarErrors.py_ script. To merge this tables in _outfile2_rname.txt_ one can run this script, giving first the total number of files one wants to merge, followed by the file names (with the path, when necessary), _file_1, file_2, ..., file_n_, and the corresponding labels to append at the column names of each file. The are two output files:
+ * output_merged_rname.tsv: table with the percentage of each scar per cell will contain all columns from _file_1, file_2, ..., file_n_ with the appended corresponding label, and merged scars for all files as rows. 
+ * output_merged_rname.log: summary of files merged and corresponding labels.  
 
-1. 
+1. *python bin/hierarchicalClustering.py output_merged_rname.tsv n output3_rname method_label*
+ As a first approach, we cluster cells based on scar pattern using hierarchical or agglomerative clustering. The scripts takes for input parameters: 
+ * _output_merged_rname.tsv_: file with input scar percentage table
+ * _n_: Number of clusters. This will have an impact for the next filtering step. 
+ * _output3_rname_: name of output file where the scar percentage table is transposed and contains a new column with the cluster identity for each cell. 
+ * _method_label_: label to choose the clustering algorithm approach: "hcl" for hierarchical clustering and "acl" for agglomerative clustering. 
+ 
+ As an output, the script produces four files: 
+ * _output3_rname_df.txt_: 
+ * _output3_rname_clust.txt_: 
+ * _output3_rname_centroid.txt_: 
+ * _output3_rname.gpl: 
+ 
 
 2. Cluster
 3. Clean noisy scars
