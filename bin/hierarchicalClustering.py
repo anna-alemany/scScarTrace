@@ -80,10 +80,15 @@ if pdfplot=='y':
         plt.bar(range(len(df.index)), df[cigar], bottom = bottom, width = 1)
     bottom += df[cigar]
 
+    plt.ylim(0,100)
     plt.xlim(0,len(df.index))
     plt.ylabel('scar %')
     plt.xlabel('cells')
-    plt.legend(df.columns[:-1], loc = 9, bbox_to_anchor = (0.5,-0.1), ncol = 5)
-    plt.savefig(outfile + '_barplot.pdf')
+    
+    art = []
+    lgd = plt.legend(df.columns[:-1], loc = 9, bbox_to_anchor = (0.5, -0.1), ncol = 5)
+    art.append(lgd)
+
+    fig.savefig(outfile + '_barplot.pdf',  additional_artist=art, bbox_inches='tight')
     
 
