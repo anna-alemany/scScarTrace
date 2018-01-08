@@ -72,22 +72,21 @@ In case files from different lanes have already been merged, then we have 2 fast
  * output_merged_rname.tsv: table with the percentage of each scar per cell will contain all columns from _file_1, file_2, ..., file_n_ with the appended corresponding label, and merged scars for all files as rows. 
  * output_merged_rname.log: summary of files merged and corresponding labels.  
 
-1. *python bin/hierarchicalClustering.py output_merged_rname.tsv n output3_rname method_label*
+1. *python bin/hierarchicalClustering.py output_merged_rname.tsv n output3_rname method_label pdfplot_label*
  As a first approach, we cluster cells based on scar pattern using hierarchical or agglomerative clustering. The scripts takes for input parameters: 
  * _output_merged_rname.tsv_: file with input scar percentage table
  * _n_: Number of clusters. This will have an impact for the next filtering step. 
  * _output3_rname_: root name of output files.
  * _method_label_: label to choose the clustering algorithm approach: "hcl" for hierarchical clustering and "acl" for agglomerative clustering. 
+ * _pdfplot_label_: label to activate the generation of a plot with the barplot of scar percentage per cell when set to "y". When this label is equal to "y" the code becomes a bit slower. 
  
  As an output, the script produces four files: 
  * _output3_rname_df.txt_: text file with the scar percentage table which is now transposed and contains a new column with the cluster identity for each cell. 
  * _output3_rname_clust.txt_: text file with the list of cluster assigned to each cell.
  * _output3_rname_centroid.txt_: text file with table of mean scar expression over all cells assigned to each cluster.
  * _output3_rname.gpl_: script to generate scar barplode in ![gnuplot](http://www.gnuplot.info/).
- * _output3_rname_barplot.pdf_: plot...
+ * _output3_rname_barplot.pdf_: barplot displaying scar percentage per cell, with cells sorted by clone identity. This plot is only generated when _pdfplot_label_ is set to _y_
  
-
-2. Cluster
 3. Clean noisy scars
-4. Final clustering
+4. Final clustering via hamming distances
 5. Copy number of each scar
