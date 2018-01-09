@@ -78,7 +78,7 @@ if pdfplot=='y':
     bottom=np.zeros(len(df.index))
     for cigar in df.columns[:-1]:
         plt.bar(range(len(df.index)), df[cigar], bottom = bottom, width = 1)
-    bottom += df[cigar]
+        bottom += df[cigar]
 
     plt.ylim(0,100)
     plt.xlim(0,len(df.index))
