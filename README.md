@@ -87,6 +87,15 @@ In case files from different lanes have already been merged, then we have 2 fast
  * _output3_rname.gpl_: script to generate scar barplode in ![gnuplot](http://www.gnuplot.info/).
  * _output3_rname_barplot.pdf_: barplot displaying scar percentage per cell, with cells sorted by clone identity. This plot is only generated when _pdfplot_label_ is set to _y_. For the sake of speed, it is better to produce this plot with gnuplot using the script _output3_rname.gpl_. 
  
-3. *python bin/Clean noisy scars
+3. *python bin/cleanCellScarfraction.py output3_rname_df.txt threshold output4_fullname*
+ From the ![barplot](https://github.com/anna-alemany/scScarTrace/blob/master/examples/example_raw_barplot.pdf) it can be seen that there is all cells have some residual scars (with a tiny percentage) that consist of scars leaking from other cells. The present script will allow to remove these scars from each cell. The script takes, as input parameters:
+ * output3_rname_df.txt: text file with input scar table, obtained by running the previous script. 
+ * threshold: percentage threshold, so that scars in a cell that are present less than _threshold_ will be removed in that cell. A common threshold is 3.5. 
+ * output4_fullname: name for the output file. 
+ As an output, the script produces a text file named _output4_fullname_ that contains the new filtered table. 
+
 4. Final clustering via hamming distances
-5. Copy number of each scar
+
+5. Pool clones
+
+6. Copy number of each scar
