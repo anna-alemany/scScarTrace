@@ -85,8 +85,8 @@ In case files from different lanes have already been merged, then we have 2 fast
  * _output3_rname_clust.txt_: text file with the list of cluster assigned to each cell.
  * _output3_rname_centroid.txt_: text file with table of mean scar expression over all cells assigned to each cluster.
  * _output3_rname.gpl_: script to generate scar barplode in ![gnuplot](http://www.gnuplot.info/).
- * _output3_rname_barplot.pdf_: barplot displaying scar percentage per cell, with cells sorted by clone identity. This plot is only generated when _pdfplot_label_ is set to _y_. For the sake of speed, it is better to produce this plot with the gnuplot using the script generated. 
+ * _output3_rname_barplot.pdf_: barplot displaying scar percentage per cell, with cells sorted by clone identity. This plot is only generated when _pdfplot_label_ is set to _y_. For the sake of speed, it is better to produce this plot with gnuplot using the script _output3_rname.gpl_. 
  
-3. Clean noisy scars
+3. *python bin/Clean noisy scars
 4. Final clustering via hamming distances
 5. Copy number of each scar
