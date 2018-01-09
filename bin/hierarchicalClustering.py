@@ -39,23 +39,7 @@ for i in range(ncluster):
     rdf = df[cells]
     centroid = rdf.mean(axis=1).sort_values(ascending=False)
     centroiddf[i] = centroid
-    d = []
-    for cell in cells:
-        d.append(dist.euclidean(df[cell], centroid))
-    distCM.loc[i] = [np.array(d).mean(), np.array(d).var(), len(cells)]
 centroiddf.transpose().to_csv(outfile + '_centroid.txt', sep = '\t')
-distCM.to_csv(outfile + '_distCM.txt', sep = '\t')
-
-intSize0 = centroiddf.values.tolist()
-intSize = []
-for l in intSize0:
-    intSize += l
-binnum = 90
-h = np.histogram(intSize, bins = binnum, density = True)
-histo = pd.DataFrame({'x': [ 0.5*sum(h[1][i:i+2]) for i in range(binnum)], 'y': h[0]})
-histo.to_csv(outfile + '_scarSize.txt', sep = '\t', index = None)
-
-df[hclustdf.index].corr().to_csv(outfile + '_corr.txt', sep = '\t')
 
 df = df[hclustdf.index].transpose()
 df['hclust'] = hclustdf
