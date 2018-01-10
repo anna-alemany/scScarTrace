@@ -61,26 +61,22 @@ centroids = centroids.loc[hdf['cell']]
 centroids.index.name = 'cellID'
 centroids.to_csv(outfile + '_HDcentroids.txt', sep = '\t')
 
-sys.exit()
-centroids = centroidsl5
-hclust = sklearn.cluster.AgglomerativeClustering(n_clusters = 5)
-hclust.fit(centroids[centroids.columns[:-1]])
-hdf = pd.DataFrame({'cell': centroids.index, 'cl': hclust.labels_})
-hdf = hdf.sort_values(by='cl')
-centroids = centroids.loc[hdf['cell']]
-centroids.index.name = 'cellID'
-centroids.to_csv(outfile + '_HDcentroids-l5.txt', sep = '\t')
-idxsel = [idx for idx in dfnew.index if dfnew.loc[idx, 'hclust'] in set(centroids['hclust'])]
-dfnew.loc[idxsel].to_csv(outfile + '_HDl5.txt', sep = '\t')
 
-centroids = centroidsg5
-hclust = sklearn.cluster.AgglomerativeClustering(n_clusters = 5)
-hclust.fit(centroids[centroids.columns[:-1]])
-hdf = pd.DataFrame({'cell': centroids.index, 'cl': hclust.labels_})
-hdf = hdf.sort_values(by='cl')
-centroids = centroids.loc[hdf['cell']]
-centroids.index.name = 'cellID'
-centroids.to_csv(outfile + '_HDcentroids-g5.txt', sep = '\t')
-idxsel = [idx for idx in dfnew.index if dfnew.loc[idx, 'hclust'] in set(centroids['hclust'])]
-dfnew.loc[idxsel].to_csv(outfile + '_HDg5.txt', sep = '\t')
+if pdfplot=='y':
+    fig = plt.figure(figsize=(15,5))
+    bottom=np.zeros(len(dfnew.index))
+    for cigar in dfnew.columns[:-1]:
+        plt.bar(range(len(dfnew.index)), dfnew[cigar], bottom = bottom, width = 1)
+        bottom += dfnew[cigar]
 
+    plt.ylim(0,100)
+    plt.xlim(0,len(dfnew.index))
+    plt.ylabel('scar %')
+    plt.xlabel('cells')
+    
+    art = []
+    lgd = plt.legend(df.columns[:-1], loc = 9, bbox_to_anchor = (0.5, -0.1), ncol = 5)
+    art.append(lgd)
+
+    fig.savefig(outfile + '_barplot.pdf',  additional_artist=art, bbox_inches='tight')
+    
