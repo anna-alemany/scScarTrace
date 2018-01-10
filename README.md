@@ -100,11 +100,8 @@ In case files from different lanes have already been merged, then we have 2 fast
  * _output5_rname_: root for the name of output files.
  * _pdfplot_: label to activate the generation of a plot with the barplot of scar percentage per cell when set to "y". Cells are sorted according to their assigned cluster (clone). The generationo f the plot makes the script slower. 
  As an output, the script produces the following plots:
- * _output5_rname_HD.txt_: text file with the scar percentage table which contains a column with the assigned cluster identity for each cell. 
+ * _output5_rname_HD.txt_: text file with the scar percentage table which contains a column with the assigned cluster identity for each cell. This is final.
  * _output5_rname_HDcentroids.txt_: text file with table of mean scar expression over all cells assigned to each cluster.
  * _output5_rname.gpl_: script to generate scar barplot in ![gnuplot](http://www.gnuplot.info/).
   * _output5_rname_HDbarplot.pdf_: barplot displaying scar percentage per cell, with cells sorted by clone identity. This plot is only generated when _pdfplot_ is set to _y_. For the sake of speed, it is better to produce this plot with gnuplot using the script _output5_rname.gpl_. 
  
-5. Pool clones
-
-6. Copy number of each scar
