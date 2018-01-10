@@ -1,7 +1,7 @@
 # scScarTrace
 
-Abstract for the package. 
-In what follows, I will describe each script, its function and its use. Now it is only an item list but will get better
+Collection of scripts used to extract scar clones in scar libraries produced with scScarTrace. 
+The scripts start from a collection of pair-end fastq files and finishes producing a table of scar-percentage per cell, where each cell is assigned to a give clone determined by scar content. 
 
 ## Initial files
 Initially, we have either 8 fastq.gz files for each pair end library, that read as follows:
