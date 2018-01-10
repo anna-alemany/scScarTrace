@@ -6,9 +6,9 @@ import sklearn.cluster
 try:
     df = read_csv(sys.argv[1], sep = '\t', index_col = 0)
     outfile = sys.argv[2]
+    pdfplot = sys.argv[3]
 except:
-    sys.exit('Please, give path to _df.txt file (full name); root for output file')
-
+    sys.exit('Please, give path to _df.txt file (full name); root for output file; produce pdf plot (y/n)')
 
 hcl = df['hclust']
 del df['hclust']
