@@ -1,7 +1,7 @@
 # scScarTrace
 
 Collection of scripts used to extract scar clones in scar libraries produced with scScarTrace. 
-The scripts start from a collection of pair-end fastq files and finishes producing a table of scar-percentage per cell, where each cell is assigned to a give clone determined by scar content. 
+Initially, we need pair-end fastq files and the scripts produce a final table of scar-percentage per cell, where each cell is assigned to a give clone determined by scar content. This table can undergo further filtering, such as removing clones with less than a given number of cells, or merging together clones with similar scar content. 
 
 ## Initial files
 Initially, we have either 8 fastq.gz files for each pair end library, that read as follows:
