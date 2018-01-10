@@ -60,12 +60,12 @@ f.close()
 if pdfplot=='y':
     fig = plt.figure(figsize=(15,5))
     bottom=np.zeros(len(dfnew.index))
-    for cigar in dfnew.columns[:-1]:
-        plt.bar(range(len(dfnew.index)), dfnew[cigar], bottom = bottom, width = 1)
-        bottom += dfnew[cigar]
+    for cigar in df.columns[:-1]:
+        plt.bar(range(len(df.index)), df[cigar], bottom = bottom, width = 1)
+        bottom += df[cigar]
 
     plt.ylim(0,100)
-    plt.xlim(0,len(dfnew.index))
+    plt.xlim(0,len(df.index))
     plt.ylabel('scar %')
     plt.xlabel('cells')
     
@@ -74,5 +74,3 @@ if pdfplot=='y':
     art.append(lgd)
 
     fig.savefig(outfile + '_barplot.pdf',  additional_artist=art, bbox_inches='tight')
-    
-
