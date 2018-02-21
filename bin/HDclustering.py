@@ -1,7 +1,10 @@
 import sys, os
 from pandas.io.parsers import read_csv
+import numpy as np
 import pandas as pd
 import sklearn.cluster
+import matplotlib.pyplot as plt
+from Colors import *
 
 try:
     df = read_csv(sys.argv[1], sep = '\t', index_col = 0)
@@ -65,8 +68,9 @@ centroids.to_csv(outfile + '_HDcentroids.txt', sep = '\t')
 if pdfplot=='y':
     fig = plt.figure(figsize=(15,5))
     bottom=np.zeros(len(dfnew.index))
-    for cigar in dfnew.columns[:-1]:
-        plt.bar(range(len(dfnew.index)), dfnew[cigar], bottom = bottom, width = 1)
+    for i,cigar in enumerate(dfnew.columns[:-1]):
+        j = np.mod(i,len(colors))
+        plt.bar(range(len(dfnew.index)), dfnew[cigar], bottom = bottom, width = 1, color=colors[j])
         bottom += dfnew[cigar]
 
     plt.ylim(0,100)
@@ -78,5 +82,5 @@ if pdfplot=='y':
     lgd = plt.legend(df.columns[:-1], loc = 9, bbox_to_anchor = (0.5, -0.1), ncol = 5)
     art.append(lgd)
 
-    fig.savefig(outfile + '_barplot.pdf',  additional_artist=art, bbox_inches='tight')
+    fig.savefig(outfile + '_HDbarplot.pdf',  additional_artist=art, bbox_inches='tight')
     

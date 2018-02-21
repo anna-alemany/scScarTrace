@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import scipy.spatial.distance as dist
 import matplotlib.pyplot as plt
+from Colors import *
 
 try:
     indata = sys.argv[1]
@@ -57,11 +58,13 @@ print >> f, 'pl for [i=2:' + str(df.shape[1]) + '] "' + outfile + '_df.txt" us i
 print >> f, 'rep for [i=0:' + str(ncluster-1) + '] "' + outfile + '_clust.txt" us ($2==i?10:1/0) noti'
 f.close()
 
+
 if pdfplot=='y':
     fig = plt.figure(figsize=(15,5))
-    bottom=np.zeros(len(dfnew.index))
-    for cigar in df.columns[:-1]:
-        plt.bar(range(len(df.index)), df[cigar], bottom = bottom, width = 1)
+    bottom=np.zeros(len(df.index))
+    for i, cigar in enumerate(df.columns[:-1]):
+        j = np.mod(i,len(colors))
+        plt.bar(range(len(df.index)), df[cigar], bottom = bottom, width = 1, color=colors[j])
         bottom += df[cigar]
 
     plt.ylim(0,100)

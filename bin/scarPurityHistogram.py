@@ -4,6 +4,7 @@ import numpy as np
 from pandas.io.parsers import read_csv
 from collections import Counter
 import argparse as argp
+import matplotlib.pyplot as plt
 
 try:
     inputdffile = sys.argv[1]
@@ -39,8 +40,23 @@ for cigar in n:
     n[cigar] = 100.*n[cigar]/n[cigar].sum()
     n[cigar] = n[cigar].transpose()
     n[cigar].index.name = 'loc'
+    for nucleotide in nt:
+        if nucleotide not in n[cigar].columns:
+            n[cigar][nucleotide] = 0
     n[cigar]['seq'] = [n[cigar].columns[n[cigar].loc[i].max()==n[cigar].loc[i]][0] for i in n[cigar].index]
     n[cigar].to_csv(output + '/' + cigar, sep = '\t')
 
+    fig = plt.figure()
+    bottom = np.zeros(len(n[cigar]))
+    for nt in ['A', 'C', 'G', 'T', 'N']:
+        plt.bar(range(len(n[cigar])), n[cigar][nt], bottom = bottom, width = 1)
+        bottom += n[cigar][nt]
+    art = []
+    lgd = plt.legend(['A','C','G','T','N'], loc = 9, bbox_to_anchor = (0.5, -0.15), ncol=5)
+    art.append(lgd)
+    plt.title(cigar)
+    plt.xlabel('position')
+    plt.ylabel('nt %')
+    fig.savefig(output + '/' + cigar + '.pdf', additional_artist=art, bbox_inches='tight')
 sys.exit()
 
